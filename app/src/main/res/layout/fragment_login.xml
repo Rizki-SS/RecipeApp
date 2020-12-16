@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.fargment.LoginFragment">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.recipeapp.viewmodel.AuthViewModel" />
+    </data>
+    
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Username"
+            android:text="@={vm.username}"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_chainStyle="packed"
+            style="@style/fillStyle" />
+
+        <EditText
+            android:id="@+id/password"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:text="@={vm.password}"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username"
+            style="@style/fillStyle"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/fillStyle"
+            android:layout_marginTop="10dp"
+            android:text="Masuk"
+            android:onClick="@{(v)->vm.login(v)}"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            style="@style/logo_size_150"
+            android:src="@drawable/logo_maskoki"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.339" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/fillStyle"
+            android:layout_marginTop="10dp"
+            android:text="Daftar"
+            android:background="#fff"
+            android:onClick="@{(v)->vm.clickRegister(v)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
