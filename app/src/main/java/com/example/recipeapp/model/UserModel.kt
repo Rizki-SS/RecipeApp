@@ -7,13 +7,8 @@ data class UserModel(
     val username: String
 )
 
-data class UserLoginModel(
-    val username: String,
-    val password: String
-)
-
-data class UserRegisterModel(
-    val username: String,
-    val password: String,
-    val name:String
-)
+class UserRequestModel{
+    var username: String? = null
+    var password: String? = null
+    var name:String? = null
+}

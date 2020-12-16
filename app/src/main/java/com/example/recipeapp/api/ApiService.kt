@@ -1,9 +1,6 @@
 package com.example.recipeapp.api
 
-import com.example.recipeapp.model.CommentModel
-import com.example.recipeapp.model.RecipeModel
-import com.example.recipeapp.model.UserLoginModel
-import com.example.recipeapp.model.UserModel
+import com.example.recipeapp.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -49,13 +46,11 @@ interface ApiService {
 
     @POST("/api/users/register")
     fun register(
-        @Body username:String,
-        @Body name:String,
-        @Body password:String
+        @Body user:UserRequestModel
     ):Call <UserModel>
 
     @POST("/api/users/token")
     fun login(
-        @Body user:UserLoginModel
+        @Body user:UserRequestModel
     ):Call <UserModel>
 }

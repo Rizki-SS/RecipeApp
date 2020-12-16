@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.fargment.RegisterFragment">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.recipeapp.viewmodel.AuthViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,6 +21,7 @@
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Username"
+            android:text="@={vm.userRequestModel.username}"
             app:layout_constraintBottom_toTopOf="@+id/editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -26,6 +33,7 @@
             android:id="@+id/editText"
             android:hint="Nama"
             style="@style/fillStyle"
+            android:text="@={vm.userRequestModel.name}"
             app:layout_constraintBottom_toTopOf="@+id/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -38,6 +46,7 @@
             android:ems="10"
             android:hint="password"
             android:inputType="textPassword"
+            android:text="@={vm.userRequestModel.password}"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -50,6 +59,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             android:text="Daftar"
+            android:onClick="@{(v) -> vm.clickRegister(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
