@@ -1,5 +1,6 @@
 package com.example.recipeapp.view.fargment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentLoginBinding
+import com.example.recipeapp.session.Session
 import com.example.recipeapp.view.activity.MainActivity
 import com.example.recipeapp.viewmodel.AuthViewModel
 
@@ -46,6 +48,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         vm  = ViewModelProvider(this).get(AuthViewModel::class.java)
+        vm.session = Session(this.requireContext())
         binding= FragmentLoginBinding.inflate(layoutInflater, container, false)
         binding.vm = vm
         return binding.root

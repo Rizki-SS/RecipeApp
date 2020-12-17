@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.example.recipeapp.api.ApiClient
 import com.example.recipeapp.model.UserModel
 import com.example.recipeapp.model.UserRequestModel
+import com.example.recipeapp.session.Session
 import com.example.recipeapp.view.fargment.LoginFragmentDirections
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,27 +27,29 @@ class AuthViewModel:ViewModel(){
     private val _error = MutableLiveData<String>()
     val error:LiveData<String> get() = _error
 
+    lateinit var session:Session
+
     init {
         _userRequestModel.value = UserRequestModel()
     }
 
     //login function
     fun login(view:View){
+        Log.d("user", _userRequestModel.value.toString())
         val api = ApiClient().getApiServic();
         api.login(_userRequestModel.value!!)
             .enqueue(object :Callback<UserModel>{
                 override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                    Log.d("Failed", t.message.toString())
                     _error.value = t.message.toString()
                 }
 
                 override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
 //                    response.body()?.let { session.setUser(it) }
                     if (response.body()!=null){
+                        session.setUser(response.body()!!)
                         _isLogin.value = true
                     }else{
                         _error.value = "Username atau password salah"
-                        Log.d("failed", response.errorBody().toString())
                     }
                 }
 
@@ -59,17 +62,15 @@ class AuthViewModel:ViewModel(){
         api.register(_userRequestModel.value!!)
             .enqueue(object :Callback<UserModel>{
                 override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                    Log.d("Failed", t.message.toString())
                     _error.value = t.message.toString()
                 }
 
                 override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                     if (response.body()!=null){
+                        session.setUser(response.body()!!)
                         _isLogin.value = true
                     }else{
-                        Log.d("failed", response.errorBody().toString())
-                        _error.value = "Username atau password salah"
-
+                        _error.value = "Harap isi semua bidang"
                     }
                 }
 

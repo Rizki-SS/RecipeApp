@@ -11,11 +11,12 @@ class Session(context: Context){
     private val NAME_KEY = "key_name"
     private val TOKEN_KEY = "key_token"
     private val ID = "key_id"
-    private val preferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);
+    private val PREFS_NAME = "mas_koki"
+    val preferences: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     val isLogin:Boolean
         get() {
-            return preferences.getBoolean(TOKEN_KEY,true)
+            return !tokenUser.isNullOrEmpty()
         }
 
     val idUser:Int
@@ -23,7 +24,7 @@ class Session(context: Context){
             return preferences.getInt(ID, 0)
         }
 
-    val nameUser: String?
+    val name: String?
         get() {
             return preferences.getString(NAME_KEY,"")
         }

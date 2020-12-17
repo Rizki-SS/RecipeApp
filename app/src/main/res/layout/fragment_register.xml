@@ -59,7 +59,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             android:text="Daftar"
-            android:onClick="@{(v) -> vm.clickRegister(v)}"
+            android:onClick="@{(v) -> vm.register(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
