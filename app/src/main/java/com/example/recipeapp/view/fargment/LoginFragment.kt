@@ -1,19 +1,15 @@
 package com.example.recipeapp.view.fargment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentLoginBinding
-import com.example.recipeapp.session.Session
+import com.example.recipeapp.utility.Session
 import com.example.recipeapp.view.activity.MainActivity
 import com.example.recipeapp.viewmodel.AuthViewModel
 

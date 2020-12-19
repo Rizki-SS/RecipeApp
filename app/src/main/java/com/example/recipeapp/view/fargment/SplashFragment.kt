@@ -10,9 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.recipeapp.R
-import com.example.recipeapp.session.Session
+import com.example.recipeapp.utility.Session
 import com.example.recipeapp.view.activity.MainActivity
-import com.example.recipeapp.viewmodel.AuthViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

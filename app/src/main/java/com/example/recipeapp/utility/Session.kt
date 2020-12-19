@@ -1,8 +1,7 @@
-package com.example.recipeapp.session
+package com.example.recipeapp.utility
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import com.example.recipeapp.model.UserModel
 
 

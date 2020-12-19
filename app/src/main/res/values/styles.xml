@@ -15,7 +15,10 @@
     <style name="fillStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginHorizontal">40dp</item>
+    </style>
+
+    <style name="rounded_12_dp" parent="">
+        <item name="cornerSize">12dp</item>
     </style>
 
 </resources>

@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.recipeapp.R
-import com.example.recipeapp.databinding.FragmentLoginBinding
 import com.example.recipeapp.databinding.FragmentRegisterBinding
-import com.example.recipeapp.session.Session
+import com.example.recipeapp.utility.Session
 import com.example.recipeapp.view.activity.MainActivity
 import com.example.recipeapp.viewmodel.AuthViewModel
 

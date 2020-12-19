@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import com.example.recipeapp.api.ApiClient
 import com.example.recipeapp.model.UserModel
 import com.example.recipeapp.model.UserRequestModel
-import com.example.recipeapp.session.Session
+import com.example.recipeapp.utility.Session
 import com.example.recipeapp.view.fargment.LoginFragmentDirections
 import retrofit2.Call
 import retrofit2.Callback
