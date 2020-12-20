@@ -1,19 +1,19 @@
 package com.example.recipeapp.utility
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.ItemRecipesLayoutBinding
 import com.example.recipeapp.model.RecipeModel
 
-class AdaptorRecipeView(
+class RecipeAdaptor(
     private var data: List<RecipeModel>
-) : RecyclerView.Adapter<AdaptorRecipeView.ItemViewHolder>() {
+) : RecyclerView.Adapter<RecipeAdaptor.ItemViewHolder>() {
 
     class ItemViewHolder(
         val listItemBinding: ItemRecipesLayoutBinding
@@ -37,6 +37,7 @@ class AdaptorRecipeView(
         holder.itemView.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 val activity = v!!.context as AppCompatActivity
+                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_dashboard)
             }
         })
     }

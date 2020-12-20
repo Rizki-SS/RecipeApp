@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentHomeBinding
+import com.example.recipeapp.utility.Session
 import com.example.recipeapp.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
         homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+        homeViewModel.session = Session(this.requireContext())
         binding.vm = homeViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
