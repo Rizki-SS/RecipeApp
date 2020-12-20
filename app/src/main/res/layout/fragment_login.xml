@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.fargment.LoginFragment">
+    tools:context=".view.ui.auth.LoginFragment">
 
     <data>
         <variable
             name="vm"
-            type="com.example.recipeapp.viewmodel.AuthViewModel" />
+            type="com.example.recipeapp.view.ui.auth.AuthViewModel" />
     </data>
     
     

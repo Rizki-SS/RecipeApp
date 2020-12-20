@@ -1,12 +1,10 @@
-package com.example.recipeapp.viewmodel
+package com.example.recipeapp.view.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.recipeapp.api.ApiClient
 import com.example.recipeapp.model.RecipeModel
-import com.example.recipeapp.model.UserModel
 import com.example.recipeapp.utility.Session
 import retrofit2.Call
 import retrofit2.Callback

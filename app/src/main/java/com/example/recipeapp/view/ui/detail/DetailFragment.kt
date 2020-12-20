@@ -1,17 +1,15 @@
-package com.example.recipeapp.view.fargment
+package com.example.recipeapp.view.ui.detail
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import com.example.recipeapp.R
-import com.example.recipeapp.utility.Session
-import com.example.recipeapp.view.activity.MainActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.recipeapp.databinding.FragmentDetailBinding
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SplashFragment.newInstance] factory method to
+ * Use the [DetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SplashFragment : Fragment() {
+class DetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,30 +34,21 @@ class SplashFragment : Fragment() {
         }
     }
 
+    private lateinit var binding: FragmentDetailBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-    }
+        val vm: DetailVIewModel by viewModels {
+            DetailViewModelFactory(this.requireActivity().application, requireArguments().getInt("id"))
+        }
 
-    private lateinit var session:Session
+        binding = FragmentDetailBinding.inflate(layoutInflater,container,false)
+        binding.vm = vm
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        session = Session(this.requireContext())
-
-        Log.d("sda",session.isLogin.toString())
-
-        Handler().postDelayed({
-            if (session.isLogin){
-                startActivity(Intent(activity, MainActivity::class.java))
-                activity?.finish();
-            }else{
-                view.findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment3())
-            }
-        }, 3000)
     }
 
     companion object {
@@ -69,16 +58,22 @@ class SplashFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SplashFragment.
+         * @return A new instance of fragment DetailFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SplashFragment().apply {
+            DetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        activity?.actionBar?.hide();
     }
 }

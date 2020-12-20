@@ -1,4 +1,4 @@
-package com.example.recipeapp.view.fargment
+package com.example.recipeapp.view.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.recipeapp.databinding.FragmentLoginBinding
 import com.example.recipeapp.utility.Session
 import com.example.recipeapp.view.activity.MainActivity
-import com.example.recipeapp.viewmodel.AuthViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +35,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private lateinit var vm:AuthViewModel
+    private lateinit var vm: AuthViewModel
     private lateinit var binding:FragmentLoginBinding
 
     override fun onCreateView(

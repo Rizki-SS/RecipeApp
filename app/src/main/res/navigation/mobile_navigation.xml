@@ -7,23 +7,27 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.recipeapp.view.fargment.HomeFragment"
+        android:name="com.example.recipeapp.view.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
+            android:id="@+id/action_navigation_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.recipeapp.view.fargment.DashboardFragment"
+        android:name="com.example.recipeapp.view.ui.saved.SavedFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.recipeapp.view.fargment.NotificationsFragment"
+        android:name="com.example.recipeapp.view.ui.account.AccountFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.recipeapp.view.ui.detail.DetailFragment"
+        android:label="DetailFragment" />
 </navigation>

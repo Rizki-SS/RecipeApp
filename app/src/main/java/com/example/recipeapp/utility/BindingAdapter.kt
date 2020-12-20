@@ -14,6 +14,5 @@ fun loadImage(view: ImageView, url:String? ) {
 
 @BindingAdapter("android:setRecipeAdapter")
 fun setAdapterRecipe(view: RecyclerView, list: List<RecipeModel>? ) {
-    Log.d("list", list.toString())
     view.adapter = list?.let { RecipeAdaptor(it) }
 }

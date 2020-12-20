@@ -1,4 +1,4 @@
-package com.example.recipeapp.view.fargment
+package com.example.recipeapp.view.ui.saved
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.recipeapp.R
-import com.example.recipeapp.viewmodel.DashboardViewModel
 
-class DashboardFragment : Fragment() {
+class SavedFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dashboardViewModel: SavedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,8 +20,8 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+            ViewModelProviders.of(this).get(SavedViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_saved, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

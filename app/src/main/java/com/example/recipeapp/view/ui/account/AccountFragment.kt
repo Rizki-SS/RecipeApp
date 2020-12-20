@@ -1,4 +1,4 @@
-package com.example.recipeapp.view.fargment
+package com.example.recipeapp.view.ui.account
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.recipeapp.R
-import com.example.recipeapp.viewmodel.NotificationsViewModel
 
-class NotificationsFragment : Fragment() {
+class AccountFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var notificationsViewModel: AccountViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,8 +20,8 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel =
-            ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+            ViewModelProviders.of(this).get(AccountViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_account, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

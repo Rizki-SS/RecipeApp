@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -37,7 +38,8 @@ class RecipeAdaptor(
         holder.itemView.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 val activity = v!!.context as AppCompatActivity
-                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_dashboard)
+                val bundle = bundleOf("id" to data.get(position).id)
+                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_detailFragment, bundle)
             }
         })
     }
