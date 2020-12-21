@@ -22,8 +22,9 @@ class RecipeAdaptor(
 
     override fun getItemCount() = data.size
 
-    fun updateData(data:List<RecipeModel>){
-        this.data = data
+    fun updateData(data:Any ?){
+        this.data = data as List<RecipeModel>
+        notifyDataSetChanged();
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(

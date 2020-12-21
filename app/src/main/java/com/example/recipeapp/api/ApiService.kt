@@ -27,14 +27,15 @@ interface ApiService {
     @GET("/api/recipes/{recipeId}/comments")
     fun getRecipeComment(
         @Path("recipeId") recipeId:String
-    ):Call <CommentModel>
+    ):Call <List<CommentModel>>
 
+    @FormUrlEncoded
     @POST("/api/recipes/{recipeId}/comments")
     fun postComment(
-        @Body comment:String,
+        @Field("comment") comment:String,
         @Path("recipeId") recipeId:String,
         @Header("Authorization") key:String
-    ):Call <List<CommentModel>>
+    ):Call <CommentModel>
 
     @PUT("/api/recipes/{recipeId}/comments/{id}")
     fun updateComment(

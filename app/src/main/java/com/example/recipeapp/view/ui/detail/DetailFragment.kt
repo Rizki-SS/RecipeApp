@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.example.recipeapp.databinding.FragmentDetailBinding
+import com.example.recipeapp.view.ui.comment.CommentFragment
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +28,10 @@ class DetailFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    val vm: DetailVIewModel by viewModels {
+        DetailViewModelFactory(this.requireActivity().application, requireArguments().getInt("id"))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,12 +46,11 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val vm: DetailVIewModel by viewModels {
-            DetailViewModelFactory(this.requireActivity().application, requireArguments().getInt("id"))
-        }
+
 
         binding = FragmentDetailBinding.inflate(layoutInflater,container,false)
         binding.vm = vm
+        binding.fragment = this
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
 
@@ -75,5 +80,10 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.actionBar?.hide();
+    }
+
+
+    fun openComment(view: View){
+        getFragmentManager()?.let { vm.recipe.value?.id?.let { it1 -> CommentFragment(it1).show(it.beginTransaction(),"modal") } }
     }
 }

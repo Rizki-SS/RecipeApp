@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recipeapp.model.CommentModel
 import com.example.recipeapp.model.RecipeModel
 import com.squareup.picasso.Picasso
 
@@ -15,4 +16,10 @@ fun loadImage(view: ImageView, url:String? ) {
 @BindingAdapter("android:setRecipeAdapter")
 fun setAdapterRecipe(view: RecyclerView, list: List<RecipeModel>? ) {
     view.adapter = list?.let { RecipeAdaptor(it) }
+}
+
+
+@BindingAdapter("android:setCommentAdapter")
+fun updateAdapter(view:RecyclerView, list: List<CommentModel>?){
+    view.adapter = list?.let { CommentAdapter(it) }
 }
