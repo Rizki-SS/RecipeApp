@@ -58,7 +58,8 @@
             android:id="@+id/button2"
             style="@style/fillStyle"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/ripple_button"
+            android:textColor="@color/white"
             android:text="Daftar"
             android:onClick="@{(v) -> vm.register(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,14 +70,16 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            style="@style/logo_size_150"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/light_gray"
+            android:elevation="3dp"
             android:src="@drawable/logo_maskoki"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

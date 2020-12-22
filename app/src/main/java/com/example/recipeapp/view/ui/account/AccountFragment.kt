@@ -38,8 +38,8 @@ class AccountFragment : Fragment() {
 
     fun logout(v: View){
         val alert: AlertDialog.Builder = AlertDialog.Builder(context)
-        alert.setTitle("Do you want to logout?\n")
-        // alert.setMessage("Message");
+        alert.setTitle("Logout")
+        alert.setMessage("Do you realy to sing Out?")
         alert.setPositiveButton("Ok",
             DialogInterface.OnClickListener { dialog, whichButton ->
                 session?.clear()

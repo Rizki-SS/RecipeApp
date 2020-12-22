@@ -51,33 +51,39 @@
             android:layout_marginTop="10dp"
             android:text="Masuk"
             android:onClick="@{(v)->vm.login(v)}"
-            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:background="@drawable/ripple_button"
             app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            android:elevation="0dp"
+            />
 
         <ImageView
             android:id="@+id/imageView3"
-            style="@style/logo_size_150"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/light_gray"
+            android:elevation="3dp"
             android:src="@drawable/logo_maskoki"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button3"
             style="@style/fillStyle"
             android:layout_marginTop="10dp"
             android:text="Daftar"
-            android:background="#fff"
+            android:background="@drawable/ripple_button_2"
             android:onClick="@{(v)->vm.clickRegister(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:elevation="0dp"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
 
 
