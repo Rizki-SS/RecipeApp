@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentHomeBinding
 import com.example.recipeapp.utility.Session
+import com.example.recipeapp.utility.adapter.RecipeAdaptor
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var vm: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -20,10 +23,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
-        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
-        homeViewModel.session = Session(this.requireContext())
-        binding.vm = homeViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        vm = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+        vm.session = Session(this.requireContext())
+        binding.vm = vm
+        vm.recipeList.observe(this, Observer {
+            binding.list.adapter = RecipeAdaptor(it, R.id.action_navigation_home_to_detailFragment)
+        })
         return binding.root
     }
 }

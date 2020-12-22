@@ -104,17 +104,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/appCompatImageButton2"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/ripple_button_icon"
-            android:src="@drawable/ic_baseline_comment_24"
-            android:scaleType="fitXY"
-            android:padding="10dp"
             android:layout_margin="10dp"
+            android:background="@drawable/ripple_button_icon"
             android:elevation="3dp"
-            android:onClick="@{(v)->fragment.openComment(v)}"
+            android:onClick="@{(v)->vm.saveBtn(v)}"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_baseline_favorite_24"
             android:tint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/ripple_button_icon"
+            android:elevation="3dp"
+            android:onClick="@{(v)->fragment.openComment(v)}"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_baseline_comment_24"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatImageButton2"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,28 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.recipeapp.R
+import com.example.recipeapp.databinding.FragmentSavedBinding
+import com.example.recipeapp.utility.adapter.RecipeAdaptor
 
 class SavedFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: SavedViewModel
+    private lateinit var binding:FragmentSavedBinding
+    private val vm: SavedViewModel by viewModels {
+        SavedViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(SavedViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_saved, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        binding = FragmentSavedBinding.inflate(layoutInflater,container,false)
+        binding.vm = vm
+        vm.recipeList.observe(this, Observer {
+            binding.list.adapter = RecipeAdaptor(it, R.id.action_navigation_saved_to_detailFragment)
         })
-        return root
+        return binding.root
     }
 }

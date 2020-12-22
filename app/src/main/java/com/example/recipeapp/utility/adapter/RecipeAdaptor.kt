@@ -1,4 +1,4 @@
-package com.example.recipeapp.utility
+package com.example.recipeapp.utility.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +12,10 @@ import com.example.recipeapp.R
 import com.example.recipeapp.databinding.ItemRecipesLayoutBinding
 import com.example.recipeapp.model.RecipeModel
 
+
 class RecipeAdaptor(
-    private var data: List<RecipeModel>
+    private var data: List<RecipeModel>,
+    private val id_destination: Int
 ) : RecyclerView.Adapter<RecipeAdaptor.ItemViewHolder>() {
 
     class ItemViewHolder(
@@ -27,11 +29,13 @@ class RecipeAdaptor(
         notifyDataSetChanged();
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(
-        DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.item_recipes_layout, parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ItemViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_recipes_layout, parent, false
+            )
+        )
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 //        Log.d("String",data.get(position).toString())
@@ -40,7 +44,7 @@ class RecipeAdaptor(
             override fun onClick(v: View?) {
                 val activity = v!!.context as AppCompatActivity
                 val bundle = bundleOf("id" to data.get(position).id)
-                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_detailFragment, bundle)
+                Navigation.findNavController(v).navigate(id_destination, bundle)
             }
         })
     }

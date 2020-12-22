@@ -29,7 +29,7 @@ class DetailFragment : Fragment() {
     private var param2: String? = null
 
     val vm: DetailVIewModel by viewModels {
-        DetailViewModelFactory(this.requireActivity().application, requireArguments().getInt("id"))
+        DetailViewModelFactory(requireContext(), requireArguments().getInt("id"))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +46,6 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         binding = FragmentDetailBinding.inflate(layoutInflater,container,false)
         binding.vm = vm
         binding.fragment = this

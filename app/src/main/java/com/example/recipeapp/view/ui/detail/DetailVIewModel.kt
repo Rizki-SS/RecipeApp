@@ -1,7 +1,6 @@
 package com.example.recipeapp.view.ui.detail
 
-import android.app.Application
-import android.util.Log
+import android.content.Context
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,14 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.recipeapp.api.ApiClient
 import com.example.recipeapp.model.RecipeModel
+import com.example.recipeapp.utility.db.BookMarkDBHandle
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailVIewModel(application: Application, id:Int):ViewModel(){
+class DetailVIewModel(context: Context, id:Int):ViewModel(){
 
     private val _recipe:MutableLiveData<RecipeModel> = MutableLiveData<RecipeModel>()
     val recipe:LiveData<RecipeModel> get() = _recipe
+
+    private val db = BookMarkDBHandle(context)
 
     init {
         val api = ApiClient().getApiServic();
@@ -34,5 +36,9 @@ class DetailVIewModel(application: Application, id:Int):ViewModel(){
 
     fun navigateUp(view: View){
         Navigation.findNavController(view).navigateUp()
+    }
+
+    fun saveBtn(view: View){
+        if(recipe.value != null) db.create(_recipe.value!!) else null
     }
 }
