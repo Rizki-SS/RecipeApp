@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.recipeapp.databinding.FragmentRegisterBinding
@@ -35,17 +36,20 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private lateinit var vm: AuthViewModel
+//    private lateinit var vm: AuthViewModel
     private lateinit var binding: FragmentRegisterBinding
+    private val vm: AuthViewModel by viewModels{
+        AuthViewModelFactory(Session(this.requireContext()))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        vm = ViewModelProvider(this).get(AuthViewModel::class.java)
+//        vm = ViewModelProvider(this).get(AuthViewModel::class.java)
         binding = FragmentRegisterBinding.inflate(layoutInflater,container,false)
-        vm.session = Session(this.requireContext())
+//        vm.session = Session(this.requireContext())
         binding.vm = vm
         return binding.root
     }

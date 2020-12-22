@@ -18,7 +18,7 @@ class CommentFragment(
 ) : BottomSheetDialogFragment() {
 
     private lateinit var binding:FragmentCommentBinding
-    val vm:CommentViewModel by viewModels{
+    private val vm:CommentViewModel by viewModels{
         CommentViewModelFactory(Session(this.requireContext()), id_recipe)
     }
 
@@ -40,6 +40,7 @@ class CommentFragment(
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
                     vm.addComment(binding.sendEditText.text.toString())
+                    //set null to commen edit text and close keyboard
                     binding.sendEditText.text = null
                     val imm: InputMethodManager = v.context
                         .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

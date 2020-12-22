@@ -15,7 +15,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class AuthViewModel:ViewModel(){
+class AuthViewModel(
+    private val session:Session
+):ViewModel(){
     //live data login status
     private val _isLogin = MutableLiveData<Boolean>()
     val isLogin: LiveData<Boolean> get() = _isLogin
@@ -25,8 +27,6 @@ class AuthViewModel:ViewModel(){
 
     private val _error = MutableLiveData<String>()
     val error:LiveData<String> get() = _error
-
-    lateinit var session:Session
 
     init {
         _userRequestModel.value = UserRequestModel()
