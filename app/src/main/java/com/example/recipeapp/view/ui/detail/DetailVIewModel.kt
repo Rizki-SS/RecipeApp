@@ -13,10 +13,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailVIewModel(context: Context, id:Int):ViewModel(){
+class DetailVIewModel(
+    private val context: Context,
+    private val id:Int
+):ViewModel(){
 
     private val _recipe:MutableLiveData<RecipeModel> = MutableLiveData<RecipeModel>()
     val recipe:LiveData<RecipeModel> get() = _recipe
+
+    private val _isSaved:MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val isSaved:LiveData<Boolean> get() = _isSaved
 
     private val db = BookMarkDBHandle(context)
 
@@ -32,6 +38,8 @@ class DetailVIewModel(context: Context, id:Int):ViewModel(){
             }
 
         })
+
+        _isSaved.value = db.isSaved(id)
     }
 
     fun navigateUp(view: View){
@@ -39,6 +47,11 @@ class DetailVIewModel(context: Context, id:Int):ViewModel(){
     }
 
     fun saveBtn(view: View){
-        if(recipe.value != null) db.create(_recipe.value!!) else null
+        if (_isSaved.value!!){
+            db.delete(id)
+        }else{
+            if(recipe.value != null) db.create(_recipe.value!!) else null
+        }
+        _isSaved.value = isSaved.value?.not()
     }
 }

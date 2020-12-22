@@ -104,7 +104,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/appCompatImageButton2"
+            android:id="@+id/saveBtn"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_margin="10dp"
@@ -113,7 +113,7 @@
             android:onClick="@{(v)->vm.saveBtn(v)}"
             android:padding="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_baseline_favorite_24"
+            android:src="@drawable/ic_baseline_favorite_border_24"
             android:tint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -129,7 +129,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_baseline_comment_24"
             android:tint="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@+id/appCompatImageButton2"
+            app:layout_constraintEnd_toStartOf="@+id/saveBtn"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

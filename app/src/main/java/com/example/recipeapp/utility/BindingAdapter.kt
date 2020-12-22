@@ -22,8 +22,7 @@ fun loadImage(view: ImageView, url:String? ) {
 //        )
 //    }
 //}
-//
-//
+
 @BindingAdapter("android:setCommentAdapter")
 fun updateAdapter(view:RecyclerView, list: List<CommentModel>?){
     view.adapter = list?.let {

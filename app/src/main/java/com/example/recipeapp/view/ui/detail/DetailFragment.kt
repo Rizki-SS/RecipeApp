@@ -9,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentDetailBinding
 import com.example.recipeapp.view.ui.comment.CommentFragment
+import kotlinx.android.synthetic.main.fragment_detail.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,6 +52,13 @@ class DetailFragment : Fragment() {
         binding = FragmentDetailBinding.inflate(layoutInflater,container,false)
         binding.vm = vm
         binding.fragment = this
+        vm.isSaved.observe(this, Observer {
+            if (vm.isSaved.value!!){
+                binding.saveBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
+            }else{
+                binding.saveBtn.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            }
+        })
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
 

@@ -64,11 +64,19 @@ class BookMarkDBHandle(
         )
     }
 
+    fun isSaved(id:Int):Boolean{
+        val query = "SELECT id FROM ${BookMarkDB.TABLE} WHERE id = ${id}"
+
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery(query, null)
+
+        return cursor.count > 0
+    }
+
     fun delete(id:Int){
         val db = dbHelper.writableDatabase
-        val selection = "${BookMarkDB.ID_RECIPE} LIKE ${id}"
-        val selectionArgs = arrayOf("id")
-        val deteleRaw = db.delete(BookMarkDB.TABLE, selection,selectionArgs)
+        val selection = "${BookMarkDB.ID_RECIPE} = ${id}"
+        val count = db.delete(BookMarkDB.TABLE, selection,null)
     }
 
 //    fun update(){}
