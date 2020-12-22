@@ -18,13 +18,13 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.recipeapp.view.ui.saved.SavedFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.recipeapp.view.ui.account.AccountFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/detailFragment"

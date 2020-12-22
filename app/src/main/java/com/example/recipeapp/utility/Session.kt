@@ -38,6 +38,10 @@ class Session(context: Context){
             return preferences.getString(USERNAME_KEY,"")
         }
 
+    fun clear(){
+        preferences.edit().clear().commit()
+    }
+
     fun setUser(userModel:UserModel){
         with(preferences.edit()){
             putInt(ID, userModel.id)

@@ -1,31 +1,53 @@
 package com.example.recipeapp.view.ui.account
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.example.recipeapp.R
+import com.example.recipeapp.databinding.FragmentAccountBinding
+import com.example.recipeapp.utility.Session
+import com.example.recipeapp.view.activity.AuthActivity
+
 
 class AccountFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: AccountViewModel
+    private lateinit var binding:FragmentAccountBinding
+    lateinit var session:Session
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProviders.of(this).get(AccountViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_account, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        binding = FragmentAccountBinding.inflate(layoutInflater, container, false)
+        binding.vm = this
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        session = Session(requireContext())
+    }
+
+    fun logout(v: View){
+        val alert: AlertDialog.Builder = AlertDialog.Builder(context)
+        alert.setTitle("Do you want to logout?\n")
+        // alert.setMessage("Message");
+        alert.setPositiveButton("Ok",
+            DialogInterface.OnClickListener { dialog, whichButton ->
+                session?.clear()
+                startActivity(Intent(activity, AuthActivity::class.java))
+                activity?.finish();
+            })
+        alert.setNegativeButton("Cancel",
+            DialogInterface.OnClickListener { dialog, whichButton -> })
+        alert.show()
     }
 }
