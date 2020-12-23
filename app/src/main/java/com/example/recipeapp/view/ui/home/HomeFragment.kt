@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
         binding.vm = vm
         vm.recipeList.observe(this, Observer {
             binding.list.adapter = RecipeAdaptor(it, R.id.action_navigation_home_to_detailFragment)
+            binding.loading.visibility = View.GONE
         })
         return binding.root
     }

@@ -34,7 +34,7 @@ class AuthViewModel(
 
     //login function
     fun login(view:View){
-        Log.d("user", _userRequestModel.value.toString())
+//        Log.d("user", _userRequestModel.value.toString())
         val api = ApiClient().getApiServic();
         api.login(_userRequestModel.value!!)
             .enqueue(object :Callback<UserModel>{

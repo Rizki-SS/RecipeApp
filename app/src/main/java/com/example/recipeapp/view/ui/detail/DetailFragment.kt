@@ -59,6 +59,9 @@ class DetailFragment : Fragment() {
                 binding.saveBtn.setImageResource(R.drawable.ic_baseline_favorite_border_24)
             }
         })
+        vm.recipe.observe(this, Observer {
+            binding.loading.visibility = View.GONE
+        })
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
 

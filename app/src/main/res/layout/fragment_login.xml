@@ -24,7 +24,7 @@
             android:ems="10"
             android:hint="Username"
             android:text="@={vm.userRequestModel.username}"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

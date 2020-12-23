@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -46,10 +47,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//        vm = ViewModelProvider(this).get(AuthViewModel::class.java)
         binding = FragmentRegisterBinding.inflate(layoutInflater,container,false)
-//        vm.session = Session(this.requireContext())
         binding.vm = vm
         return binding.root
     }
@@ -61,6 +59,15 @@ class RegisterFragment : Fragment() {
             startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish();
         })
+        vm.error.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), vm.error.value, Toast.LENGTH_LONG).show()
+        })
+//        vm.userRequestModel.observe(viewLifecycleOwner, Observer {
+//            if (vm.userRequestModel.value?.username != null ||
+//                vm.userRequestModel.value?.password != null ||
+//                vm.userRequestModel.value?.name != null)
+//                binding.button2.isEnabled = true
+//        })
     }
 
     companion object {
