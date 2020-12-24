@@ -34,7 +34,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Aplikasi end user untuk menampilkan resep makanan dari end poin https://maskoki.dhanifudin.com/. Di buat untuk memenuhi tugas akhir semester pemrograman android
+Aplikasi untuk menampilkan resep makanan dari https://maskoki.dhanifudin.com/. Di buat untuk memenuhi tugas akhir semester pemrograman android
 
 <!-- BUILT WITH -->
 ## Built With
